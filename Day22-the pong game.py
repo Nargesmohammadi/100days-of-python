@@ -7,7 +7,7 @@ import time
 screen = Screen()
 
 screen.bgcolor("green")
-screen.setup(width=800, height=600)
+screen.setup(width=850, height=600)
 screen.title("Pong")
 screen.tracer(0)
 
@@ -34,8 +34,15 @@ while game_is_on:
         # need the bounce
         ball.bounce_y()
 
-    # detect collision with right_paddle
+    # detect collision with right_paddle and left_paddle.
     if ball.distance(right_paddle) < 50 and ball.xcor() > 320 or ball.distance(left_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_x()
 
+    # detect when ball misses by right paddle.
+    if ball.xcor() > 420:
+        ball.reset_position()
+
+    # detect when ball misses by left paddle.
+    if ball.xcor() < -420:
+        ball.reset_position()
 screen.exitonclick()
