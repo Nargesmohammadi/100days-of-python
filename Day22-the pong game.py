@@ -7,7 +7,7 @@ import time
 screen = Screen()
 
 screen.bgcolor("green")
-screen.setup(width=900, height=700)
+screen.setup(width=800, height=600)
 screen.title("Pong")
 screen.tracer(0)
 
@@ -29,4 +29,8 @@ while game_is_on:
     screen.update()
     ball.move_ball()
 
+    # detecting collision with wall
+    if ball.ycor() > 220 or ball.ycor() < -220:
+        # need the bounce
+        ball.bounce()
 screen.exitonclick()
