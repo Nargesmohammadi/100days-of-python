@@ -12,8 +12,8 @@ screen.title("Pong")
 screen.tracer(0)
 
 # create right and left paddle.
-right_paddle = Paddle((350, 0))
-left_paddle = Paddle((-350, 0))
+right_paddle = Paddle((400, 0))
+left_paddle = Paddle((-400, 0))
 # create ball
 ball = Ball()
 
@@ -32,5 +32,10 @@ while game_is_on:
     # detecting collision with wall
     if ball.ycor() > 220 or ball.ycor() < -220:
         # need the bounce
-        ball.bounce()
+        ball.bounce_y()
+
+    # detect collision with right_paddle
+    if ball.distance(right_paddle) < 50 and ball.xcor() > 320 or ball.distance(left_paddle) < 50 and ball.xcor() < -320:
+        ball.bounce_x()
+
 screen.exitonclick()
