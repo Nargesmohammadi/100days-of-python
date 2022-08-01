@@ -12,7 +12,7 @@ screen.title("Crossing game")
 screen.tracer(0)
 
 player = Player()
-car = CarManager()
+car_manager = CarManager()
 
 
 screen.listen()
@@ -22,8 +22,13 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    car.cars()
-    car.move()
+    car_manager.cars()
+    car_manager.move()
+
+    # detect collision with car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
+            game_is_on = False
 
 
 
