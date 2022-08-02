@@ -4,7 +4,6 @@ from food import Food
 from scoreeboard import Scoreboard
 import time
 
-
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
@@ -20,7 +19,6 @@ screen.onkey(snake.snake_up, "Up")
 screen.onkey(snake.snake_down, "Down")
 screen.onkey(snake.snake_right, "Right")
 screen.onkey(snake.snake_left, "Left")
-
 
 game_is_on = True
 
@@ -50,7 +48,5 @@ while game_is_on:
             # game_is_on = False
             scoreeboard.reset()
             snake.reset()
-
-
 
 screen.exitonclick()
