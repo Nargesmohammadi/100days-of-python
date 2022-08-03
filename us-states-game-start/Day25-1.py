@@ -37,7 +37,14 @@ guessed_sates = []
 for guessed_sates in range(0, 51):
     answer_state = screen.textinput(title=f"{len(guessed_sates)}/50 states correct",
                                     prompt="what's another state's name?").title()
-    print(answer_state)
+    if answer_state == "Exit":
+        missing_states = []
+        for state in all_states:
+            if state not in guessed_sates:
+                missing_states.append(state)
+        new_data = pandas.DataFrame(missing_states)
+        new_data.to_csv("states_to_learn.csv")
+        break
     if answer_state in all_states:
         guessed_sates.append(answer_state)
         t = turtle.Turtle()
@@ -48,4 +55,4 @@ for guessed_sates in range(0, 51):
         # series.item(): return the first element of the underlying as python scalar:
         t.write(state_date.state.item())
 
-screen.exitonclick()
+
