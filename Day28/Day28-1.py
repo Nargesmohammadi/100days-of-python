@@ -19,18 +19,26 @@ LONG_BREAK_MIN = 20
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Tomato")
-window.config(padx=100, pady=500)
+window.config(padx=100, pady=50, bg=PINK)
 
 
-canvas = Canvas(width=200, height=224)
+canvas = Canvas(width=200, height=224, bg=PINK, highlightthickness=0)
 tomato_img = PhotoImage(file="./Day28/tomato.png")
-canvas.create_image(103, 112, image=tomato_img)
-canvas.create_text(103, 112, text="00:00")
-canvas.pack()
+canvas.create_image(100, 112, image=tomato_img)
+canvas.create_text(100, 112, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
+canvas.grid(column=1, row=1)
 
+new_label = Label(text="Timer", font=(FONT_NAME, 40, "bold"), bg=PINK, fg=GREEN)
+new_label.grid(column=1, row=0)
 
+start_button = Button(text="Start", font=(FONT_NAME, 25, "bold"))
+start_button.grid(column=0, row=2)
 
+reset_button = Button(text="Reset", font=(FONT_NAME, 25, "bold"))
+reset_button.grid(column=2, row=2)
 
+checkmark_label = Label(text="✔", font=(FONT_NAME, 25, "bold"), bg=PINK, fg=GREEN)
+checkmark_label.grid(column=1, row=3)
 
 
 
