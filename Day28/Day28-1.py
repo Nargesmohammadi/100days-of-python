@@ -23,6 +23,10 @@ def start_timerr():
 def count_down(count):
     count_min = math.floor(count / 60)
     count_sec = count % 60
+    # for have to 00:00 when second is less than 10.
+    if count_sec < 10:
+        count_sec = f"0{count_sec}"
+
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
         window.after(1000, count_down, count - 1)
@@ -52,3 +56,4 @@ checkmark_label = Label(text="✔", font=(FONT_NAME, 25, "bold"), bg=PINK, fg=GR
 checkmark_label.grid(column=1, row=3)
 
 window.mainloop()
+
