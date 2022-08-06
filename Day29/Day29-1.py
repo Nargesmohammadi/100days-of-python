@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 FONT_NAME = "Courier"
 
@@ -10,10 +11,19 @@ def save():
     website = website_input.get()
     email = email_input.get()
     password = password_input.get()
-    with open("data.txt", "a") as data_file:
-        data_file.write(f"{website} | {email} | {password}\n")
-        website_input.delete(0, END)
-        password_input.delete(0, END)
+
+    if len(website) == 0 or len(password) == 0 or len(email) == 0:
+        messagebox.showinfo(title="Oops", message="please make sure you have not left any fields empty.")
+
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f"There are details entered: \nEmail: {email}\nPassword:"
+                                                              f" {password} \nIs it ok to save?")
+
+        if is_ok:
+            with open("data.txt", "a") as data_file:
+                data_file.write(f"{website} | {email} | {password}\n")
+                website_input.delete(0, END)
+                password_input.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -37,7 +47,7 @@ email_label = Label(text="Email/Username:", font=(FONT_NAME, 15, "bold"))
 email_label.grid(column=0, row=2)
 email_input = Entry(width=45)
 email_input.grid(column=1, row=2, columnspan=2)
-email_input.insert(0, "Narges@gmail.com")
+# email_input.insert(0, "Narges@gmail.com")
 
 Password_label = Label(text="Password:", font=(FONT_NAME, 15, "bold"))
 Password_label.grid(column=0, row=3)
