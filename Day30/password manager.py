@@ -62,6 +62,23 @@ def save():
             password_input.delete(0, END)
 
 
+# ----------------------------find password----------------------------#
+def find_password():
+    website = website_input.get()
+    try:
+        with open("data.jason") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="error", message="No data file found.")
+    else:
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"email: {email}\n Password: {password}\n")
+        else:
+            messagebox.showinfo(title="Error", message=f"No details for {website} exists")
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
@@ -75,8 +92,8 @@ canvas.grid(column=1, row=0)
 
 website_label = Label(text="Website:", font=(FONT_NAME, 15, "bold"))
 website_label.grid(column=0, row=1)
-website_input = Entry(width=45)
-website_input.grid(column=1, row=1, columnspan=2)
+website_input = Entry(width=24)
+website_input.grid(column=1, row=1)
 website_input.focus()
 
 email_label = Label(text="Email/Username:", font=(FONT_NAME, 15, "bold"))
@@ -95,5 +112,8 @@ Generate_Password_button.grid(column=2, row=3)
 
 add_button = Button(text="add", font=(FONT_NAME, 15, "bold"), width=29, command=save)
 add_button.grid(column=1, row=4, columnspan=2)
+
+search_button = Button(text="Search", font=(FONT_NAME, 12, "bold"), command=find_password, width=13)
+search_button.grid(column=2, row=1)
 
 window.mainloop()
