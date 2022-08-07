@@ -34,7 +34,7 @@ def save():
     website = website_input.get()
     email = email_input.get()
     password = password_input.get()
-    new_data = {website:{
+    new_data = {website: {
         "email": email,
         "password": password,
     }}
@@ -43,15 +43,21 @@ def save():
         messagebox.showinfo(title="Oops", message="please make sure you have not left any fields empty.")
 
     else:
-        with open("data.jason", "r") as data_file:
-            # reading old data:
-            data = json.load(data_file)
+        try:
+            with open("data.jason", "r") as data_file:
+                # reading old data:
+                data = json.load(data_file)
+        except FileNotFoundError:
+            with open("data.jason", "w") as data_file:
+                json.dump(new_data, data_file, indent=4)
+        else:
             # updating old data with new data:
             data.update(new_data)
-        with open("data.jason", "w") as data_file:
-            # saving updated data:
-            json.dump(data, data_file, indent=4)
 
+            with open("data.jason", "w") as data_file:
+                # saving updated data:
+                json.dump(data, data_file, indent=4)
+        finally:
             website_input.delete(0, END)
             password_input.delete(0, END)
 
