@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from player import Player
 from carmanager import CarManager
 from scoreboardd import Scoreboard
