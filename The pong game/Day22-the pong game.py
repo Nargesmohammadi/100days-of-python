@@ -12,6 +12,7 @@ screen.setup(width=850, height=600)
 screen.title("Pong")
 screen.tracer(0)
 
+
 # create right and left paddle.
 right_paddle = Paddle((400, 0))
 left_paddle = Paddle((-400, 0))
