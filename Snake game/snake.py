@@ -9,6 +9,7 @@ RIGHT = 0
 LEFT = 180
 
 
+
 class Snake:
     def __init__(self):
         self.segments = []
