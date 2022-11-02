@@ -5,7 +5,7 @@ import pandas
 # todo 1. Create a dictionary in this format:
 {"A": "Alpha", "B": "Bravo"}
 
-data = pandas.read_csv("./Day26/nato_phonetic_alphabet.csv")
+data = pandas.read_csv("./List Copmrehension and the NATO Alphabet/nato_phonetic_alphabet.csv")
 # print(data.to_dict())
 
 new_alphabet = {row.letter: row.code for (index, row) in data.iterrows()}
