@@ -5,7 +5,7 @@ with open("/home/mitraa/Desktop/my_file.txt") as file:
     print(contents)
 
 # relative
-with open("../../Desktop/my_file.txt") as f:
+with open("../../../Desktop/my_file.txt") as f:
     contents = f.read()
     print(contents)
 
