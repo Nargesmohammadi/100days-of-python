@@ -4,6 +4,7 @@ from random import randint, choice, shuffle
 import pyperclip
 
 
+
 FONT_NAME = "Courier"
 
 
